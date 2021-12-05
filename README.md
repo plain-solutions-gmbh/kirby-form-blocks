@@ -53,7 +53,7 @@ Download and copy this repository to your plugin folder: `/site/plugins/`
 
 **Composer**
 
-`composer require microman/kirby-form-blocks:dev-master`
+`composer require microman/kirby-form-blocks`
 
 ## Basic usage
 
