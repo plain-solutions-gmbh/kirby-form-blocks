@@ -1,0 +1,41 @@
+
+label:
+  label: form.block.fromfields.label
+  type: text
+  width: 1/2
+
+width:
+  label: form.block.fromfields.width
+  type: select
+  required: true
+  default: "1/1"
+  width: 1/2
+  options:
+    - "1/1"
+    - "1/2"
+    - "1/3"
+    - "1/4"
+    - "2/3"
+    - "3/4"
+
+slug:
+  label: form.block.fromfields.slug
+  type: slug
+  required: true
+  sync: label
+  help: form.block.fromfields.slug.help
+  width: 1/2
+
+required:
+  label: form.block.fromfields.required
+  type: toggle
+  width: 1/2
+
+required_fail:
+  label: form.block.fromfields.required_fail
+  type: text
+  when:
+    required: true
+
+line:
+  type: line

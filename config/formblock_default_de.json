@@ -1,0 +1,55 @@
+[{
+    "content": {
+        "mailview": "{{ given-name }} {{ family-name }} ({{ email }})",
+        "formfields": [{
+                "content": {
+                    "label": "Vorname",
+                    "width": "1/2",
+                    "slug": "given-name",
+                    "required": true,
+                    "inputtype": "text",
+                    "required_fail": "This field cannot be empty"
+                },
+                "type": "formfields_01_input"
+            },
+            {
+                "content": {
+                    "label": "Nachname",
+                    "width": "1/2",
+                    "slug": "family-name",
+                    "inputtype": "text"
+                },
+                "type": "formfields_01_input"
+            },
+            {
+                "content": {
+                    "label": "Email",
+                    "width": "1/1",
+                    "slug": "email",
+                    "required": false,
+                    "inputtype": "email",
+                    "validate": [{
+                        "validate": "email"
+                    }]
+                },
+                "type": "formfields_01_input"
+            }
+        ],
+        "name": "Formular",
+        "enable_notify": true,
+        "notify_email": "info@domain.ch",
+        "notify_subject": "Anfrage aus der Webseite",
+        "notify_body": "<p>{{ given-name }} hat eine Anfrage gesendet:</p><p>{{ summary }}</p>",
+        "enable_confirm": true,
+        "confirm_email": "no-reply@domain.ch",
+        "confirm_subject": "Deine Anfrage",
+        "confirm_body": "<p>Danke für deine Anfrage, wir melden uns schnellstmöglich bei dir.</p>",
+        "redirect": false,
+        "success_message": "<p>Danke {{ given-name }}. Wir melden uns schnellstmöglich bei dir.</p>",
+        "success_url": "",
+        "invalid_message": "<p>Bitte kontrolliere diese Felder: {{ fields }}.</p>",
+        "fatal_message": "<p>Etwas ist schief gelaufen.<br>Wende dich an den Administrator oder versuche es später erneut.</p>",
+        "send_button": "Abschicken"
+    },
+    "type": "form"
+}]

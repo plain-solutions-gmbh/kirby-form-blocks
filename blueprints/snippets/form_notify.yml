@@ -1,0 +1,28 @@
+enable_notify:
+  type: toggle
+  label: form.block.options.enable_notify
+
+notify_email:
+  label: form.block.options.notify_email
+  type: email
+  width: 1/2
+  when:
+    enable_notify: true
+
+notify_subject:
+  label: form.block.options.notify_subject
+  type: text
+  width: 1/2
+  when: 
+    enable_notify: true
+    
+notify_body:
+  label: form.block.options.notify_body
+  type: writer
+  when:
+    enable_notify: true
+
+line1:
+  type: line
+  when:
+    enable_notify: true

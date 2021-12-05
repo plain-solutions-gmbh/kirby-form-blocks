@@ -1,0 +1,13 @@
+{
+    "name": "microman/kirby-form-blocks",
+    "description": "Contactform based on Kirby blocks. ",
+    "type": "kirby-plugin",
+    "license": "MIT",
+    "authors": [{
+        "name": "Roman Gsponer",
+        "email": "kirby@microman.ch"
+    }],
+    "require": {
+        "getkirby/composer-installer": "^1.2"
+    }
+}

@@ -1,0 +1,150 @@
+[{
+    "content": {
+        "mailview": "Dummy request",
+        "formfields": [{
+                "content": {
+                    "label": "Required text",
+                    "width": "1/2",
+                    "slug": "required-text",
+                    "required": true,
+                    "required_fail": "This is required!",
+                    "inputtype": "text",
+                    "placeholder": "",
+                    "default": "",
+                    "validate": []
+                },
+                "isHidden": false,
+                "type": "formfields_01_input"
+            },
+            {
+                "content": {
+                    "label": "Email",
+                    "width": "1/2",
+                    "slug": "email",
+                    "required": false,
+                    "required_fail": "",
+                    "inputtype": "email",
+                    "placeholder": "",
+                    "default": "",
+                    "validate": [{
+                        "validate": "email",
+                        "match": "",
+                        "minlength": null,
+                        "maxlength": null,
+                        "min": null,
+                        "max": null,
+                        "msg": ""
+                    }]
+                },
+                "isHidden": false,
+                "type": "formfields_01_input"
+            },
+            {
+                "content": {
+                    "label": "Multiselect (Required)",
+                    "width": "1/1",
+                    "slug": "multiselect-required",
+                    "required": true,
+                    "required_fail": "",
+                    "columns": "4",
+                    "options": [{
+                            "label": "Select 1",
+                            "slug": "select-1",
+                            "selected": false
+                        },
+                        {
+                            "label": "Select 2 (selected)",
+                            "slug": "select-2-selected",
+                            "selected": true
+                        },
+                        {
+                            "label": "Select 3",
+                            "slug": "select-3",
+                            "selected": false
+                        },
+                        {
+                            "label": "Select 4",
+                            "slug": "select-4",
+                            "selected": false
+                        }
+                    ]
+                },
+                "isHidden": false,
+                "type": "formfields_03_checkbox"
+            },
+            {
+                "content": {
+                    "label": "Radio",
+                    "width": "1/1",
+                    "slug": "radio",
+                    "required": false,
+                    "required_fail": "",
+                    "columns": 3,
+                    "default": "option-3",
+                    "options": [{
+                            "label": "Option 1",
+                            "slug": "option-1"
+                        },
+                        {
+                            "label": "Option 2",
+                            "slug": "option-2"
+                        },
+                        {
+                            "label": "Option 3 (Selected)",
+                            "slug": "option-3-selected"
+                        }
+                    ]
+                },
+                "isHidden": false,
+                "type": "formfields_04_radio"
+            },
+            {
+                "content": {
+                    "label": "Dropdown",
+                    "width": "1/1",
+                    "slug": "dropdown",
+                    "required": false,
+                    "required_fail": "",
+                    "placeholder": "Default",
+                    "default": null,
+                    "options": [{
+                            "label": "Item 1",
+                            "slug": "item-1"
+                        },
+                        {
+                            "label": "Item 2",
+                            "slug": "item-2"
+                        }
+                    ]
+                },
+                "isHidden": false,
+                "type": "formfields_05_select"
+            },
+            {
+                "content": {
+                    "label": "Textarea",
+                    "width": "1/1",
+                    "slug": "textarea",
+                    "required": false,
+                    "required_fail": "",
+                    "placeholder": "Predefined text",
+                    "row": 5,
+                    "man": 255
+                },
+                "isHidden": false,
+                "type": "formfields_02_textarea"
+            }
+        ],
+        "name": "Debug form",
+        "enable_notify": false,
+        "enable_confirm": false,
+        "redirect": false,
+        "success_message": "<p>This is the confirmations text</p>",
+        "success_url": "",
+        "invalid_message": "<p>Validation error: {{ fields }}.</p>",
+        "fatal_message": "<p>This is the error text</p>",
+        "send_button": "Send"
+    },
+    "isHidden": false,
+    "type": "form"
+}]

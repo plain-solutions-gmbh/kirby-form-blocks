@@ -1,0 +1,43 @@
+name: form.block.fromfields.radio
+icon: circle-filled
+
+fields:
+  columns:
+    label: form.block.fromfields.radio.columns
+    type: range
+    min: 1
+    max: 6
+    default: 3
+    width: 1/2
+
+  default:
+    label: form.block.fromfields.radio.default
+    type: selectoption
+    width: 1/2
+    help: form.block.fromfields.radio.default.help
+    structurename: options
+    fieldValue: slug
+    fieldText: name
+
+
+  options:
+    label: form.block.fromfields.radio.options
+    type: structure
+    required: true
+    columns:
+      label:
+        type: text
+
+    fields:
+      label:
+        label: form.block.fromfields.radio.options.label
+        type: text
+        required: true
+        width: 1/2
+
+      slug:
+        label: form.block.fromfields.radio.options.slug
+        type: slug
+        sync: label
+        required: true
+        width: 1/2

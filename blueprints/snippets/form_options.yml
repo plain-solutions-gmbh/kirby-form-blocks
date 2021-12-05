@@ -1,0 +1,33 @@
+redirect:
+  type: toggle
+  label: form.block.options.redirect
+  width: 1/3
+  text:
+    - form.block.options.redirect.on
+    - form.block.options.redirect.off
+
+success_message:
+  label: form.block.options.success_text
+  type: writer
+  width: 2/3
+  when:
+    redirect: false
+
+success_url:
+  label: form.block.options.success_url
+  type: url
+  width: 2/3
+  when:
+    redirect: true
+
+invalid_message:
+  label: form.block.options.invalid_message
+  type: writer
+
+fatal_message:
+  label: form.block.options.fatal_message
+  type: writer
+
+send_button:
+  label: form.block.options.send_button
+  type: text

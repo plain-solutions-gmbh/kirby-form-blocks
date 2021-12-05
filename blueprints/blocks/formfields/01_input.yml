@@ -1,0 +1,100 @@
+name: form.block.fromfields.input
+icon: headline
+
+fields:
+  inputtype:
+    label: form.block.fromfields.input.inputtype
+    type: select
+    default: text
+    width: 1/3
+    options:
+      text: text
+      number: number
+      email: email
+      tel: tel
+      url: url
+      password: password
+      hidden: hidden
+
+  placeholder:
+    label: form.block.fromfields.input.placeholder
+    type: text
+    width: 1/3
+
+  default:
+    label: form.block.fromfields.input.default
+    type: text
+    width: 1/3
+      
+  validate:
+    label: form.block.fromfields.input.validate
+    type: structure
+    columns:
+      validate:
+        width: 1/4
+        label: form.block.fromfields.input.validate.validate
+      msg:
+        width: 3/4
+        label: form.block.fromfields.input.validate.msg
+
+    fields:
+      validate:
+        label: form.block.fromfields.input.fields
+        type: select
+        width: 1/2
+        options:
+          alpha: alpha
+          num: num
+          minLength: minLength
+          maxLength: maxLength
+          min: min
+          max: max
+          email: email
+          url: url
+          match: match
+
+      match:
+        label: form.block.fromfields.input.fields.match
+        type: text
+        help:  form.block.fromfields.input.fields.match.help
+        width: 1/2
+        when:
+          validate: match
+
+      minlength: 
+        label: form.block.fromfields.input.fields.minLength
+        type: number
+        default: 0
+        width: 1/2
+        when:
+          validate: minLength
+
+      maxlength: 
+        label: form.block.fromfields.input.fields.maxLength
+        type: number
+        default: 100
+        width: 1/2
+        when:
+          validate: maxLength
+
+      min: 
+        label: form.block.fromfields.input.fields.min
+        type: number
+        default: 0
+        width: 1/2
+        when:
+          validate: min
+
+      max: 
+        label: form.block.fromfields.input.fields.max
+        type: number
+        default: 100
+        width: 1/2
+        when:
+          validate: max
+
+      msg:
+        label: form.block.fromfields.input.fields.msg
+        type: text
+        help: form.block.fromfields.input.fields.msg.help
+        

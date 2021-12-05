@@ -1,0 +1,17 @@
+name: Information
+icon: alert
+
+fields:
+  title:
+    type: text
+    width: 1/2
+  theme:
+    type: select
+    width: 1/2
+    options:
+      info: Info
+      warning:  Warning
+      danger: Danger
+  info:
+    label: Text
+    type: writer
