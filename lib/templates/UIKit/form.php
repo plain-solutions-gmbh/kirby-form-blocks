@@ -23,7 +23,7 @@
 			<?php endif ?>
 
 			<div class="form-block-button form-block-submit column uk-width-1-1">
-				<input type="submit" name="<?= $form->id() ?>" value="<?= $form->message('send_button') ?>">
+				<input type="submit" class="uk-button uk-button-default" name="<?= $form->id() ?>" value="<?= $form->message('send_button') ?>">
 			</div>
 		</div>
 	</form>
@@ -38,7 +38,7 @@
 			<?= $form->errorMessage() ?>
 		</div>
 	</div>
-	
+
 <?php endif ?>
 
 <?php if ($form->isSuccess()) : ?>
