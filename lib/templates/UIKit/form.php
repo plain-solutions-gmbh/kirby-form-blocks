@@ -1,6 +1,6 @@
 <?php if ($form->showForm()) : ?>
 
-	<form method="post" action="<?= $page->url() ?>">
+	<form method="post" id="<?= $form->id() ?>" action="<?= $page->url() . "#" . $form->id() ?>">
 
 		<div class="form-block" uk-grid>
 
