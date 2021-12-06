@@ -3,7 +3,6 @@
 namespace microman;
 
 use Kirby\Cms\Block;
-use Kirby\Cms\Collection;
 use Kirby\Toolkit\A;
 use Kirby\Toolkit\V;
 use Kirby\Toolkit\Str;
@@ -205,7 +204,7 @@ class FormField extends Block
     }
 
     /**
-     * Check if this this field is an option field
+     * Returns option fields as structure
      * 
      * @return Kirby\Cms\Structure
      */
@@ -229,6 +228,16 @@ class FormField extends Block
     /************************/
     /** Validation Methods **/
     /************************/
+
+    /**
+     * Check if form is filled
+     * 
+     * @return bool
+     */
+    public function isFilled(): bool
+    {
+        return $this->fields->isFilled();
+    }
 
     /**
      * Get array of validator
