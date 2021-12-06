@@ -19,7 +19,7 @@ export default {
   },
   created () {
     //Debug!
-    setTimeout(this.open, 500)
+    //setTimeout(this.open, 500)
     
     const fields = this?.fieldset?.tabs?.inbox?.fields ?? {};
     
