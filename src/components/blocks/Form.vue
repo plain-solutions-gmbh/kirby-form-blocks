@@ -1,8 +1,8 @@
 <template>
-<div @click="open" class="k-block-type-form">
+<div class="k-block-type-form" @click="open">
 <div class="k-block-type-form-wrapper" :data-state="state">
     <k-input v-model="content.name" name="name" type="text" @input="onInput"/>
-    <k-tag :data-state="state">{{$t('form.block.inbox.show')}} ({{this.stateText}})</k-tag>
+    <k-tag :data-state="state">{{$t('form.block.inbox.show')}} ({{stateText}})</k-tag>
 </div>
 </div>
 </template>
@@ -16,23 +16,6 @@ export default {
       new: '-',
       error: 0
     }
-  },
-  created () {
-    //Debug!
-    //setTimeout(this.open, 500)
-    
-    const fields = this?.fieldset?.tabs?.inbox?.fields ?? {};
-    
-    Object.keys(fields).forEach(mailview => {
-      fields[mailview].parent = this.$attrs.id
-    });
-
-    this.updateCount()
-    
-    this.$events.$on("form.update", this.updateCount);
-  },
-  destroyed() {
-    this.$events.$off("form.update", this.updateCount);
   },
   computed: {
     state () {
@@ -61,6 +44,23 @@ export default {
 
       return out
     }
+  },
+  destroyed() {
+    this.$events.$off("form.update", this.updateCount);
+  },
+  created () {
+    //Debug!
+    //setTimeout(this.open, 500)
+    
+    const fields = this?.fieldset?.tabs?.inbox?.fields ?? {};
+    
+    Object.keys(fields).forEach(mailview => {
+      fields[mailview].parent = this.$attrs.id
+    });
+
+    this.updateCount()
+    
+    this.$events.$on("form.update", this.updateCount);
   },
   methods: {
     updateCount() {

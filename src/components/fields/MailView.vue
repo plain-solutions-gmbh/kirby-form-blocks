@@ -1,21 +1,21 @@
 <template>
-    <k-view class="k-field-type-mail-view">
+    <div class="k-field-type-mail-view">
+        <!-- eslint-disable vue/no-v-html -->
+
         <k-items>
             <k-item 
                 v-for="mail in list"
                 :key="mail.id"
                 class="k-field-type-mail-list-item"
-                @click="openMail(mail)"
-                @action="action"
                 :options="[
                     mail.read == '' ? {icon: 'preview', text: $t('form.block.inbox.asread'), click: () => setRead(true, mail)} :
                     {icon: 'unread', text: $t('form.block.inbox.asunread'), click: () => setRead(false, mail)},
                     {icon: 'trash', text: $t('form.block.inbox.delete'), click: () => deleteMail(mail)}
                 ]"
+                @click="openMail(mail)"
             >
                 
                 <k-status-icon :status="mail.status" :tooltip="mail.tooltip"/>
-
                 <header class="k-item-content">
                     <slot>
                         <h3 class="k-item-title">{{mail.title}}</h3>
@@ -39,17 +39,17 @@
         </k-text>
 
         <div v-if="displayShown">
-            <k-text-field :label="$t('form.block.inbox.display')" v-model="value" @input="$emit('input', $event)" />
+            <k-text-field :value="value" :label="$t('form.block.inbox.display')" @input="$emit('input', $event)" />
         </div>
 
         <k-dialog ref="dialog" class="k-field-type-page-dialog" size="medium">
         
             <k-headline>{{current.title}}</k-headline>
-            <div v-html="current.summary" class="k-field-type-page-dialog-table" />
+            <div class="k-field-type-page-dialog-table" v-html="current.summary"/>
 
-            <k-fieldset v-model="current" v-if="current.length > 0" disabled="true" :fields="prev" />
+            <k-fieldset v-if="current.length > 0" v-model="current" disabled="true" :fields="prev" />
 
-            <k-info-field :text="current.error" v-if="current.error" theme="negative" />
+            <k-info-field v-if="current.error" :text="current.error" theme="negative" />
 
             <template slot="footer">
                 <k-button-group>
@@ -60,14 +60,18 @@
             </template>
             
         </k-dialog>
-    </k-view>
+    </div>
+    
 
 </template>
 
 <script>
 export default {
-    created () {
-        this.findId(this.$parent)
+    props: {
+        value: {
+            type: [String],
+            default: ""
+        }
     },
     data () {
         return {
@@ -79,9 +83,6 @@ export default {
             id: 0,
             parent:0
         }
-    },
-    props: {
-        value: String
     },
     computed: {
         prev () {
@@ -104,12 +105,17 @@ export default {
            return list;
         },
     },
+    created () {
+        this.findId(this.$parent)
+    },
     methods: {
         findId (parent) {
             if (!parent) {
                 throw this.$t('form.block.inbox.notinblock');
             }
-            if (this.parent = parent.$parent?.$options?.propsData?.id ?? false) {
+            
+            this.parent = parent.$parent?.$options?.propsData?.id ?? false
+            if (this.parent) {
                 this.$api.get("form/get-requests", {form: this.parent})
                 .then((data) => this.data = data)
                 return;

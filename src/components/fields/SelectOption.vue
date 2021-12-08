@@ -12,8 +12,23 @@
 </template>
 <script>
 export default {
- 	created () {
-		 this.findOptions(this)
+	props: {
+		help: {
+			type: String,
+			default: ""
+		},
+		label: {
+			type: String,
+			default: ""
+		},
+		required: {
+			type: Boolean,
+			default: false
+		},
+		value: {
+			type: String,
+			default: ""
+		},
 	},
 	data () {
 		return {
@@ -32,11 +47,8 @@ export default {
 			return [];
 		}
 	},
-	props: {
-		help: String,
-		label: String,
-		required: Boolean,
-		value: String
+ 	created () {
+		 this.findOptions(this)
 	},
 	methods: {
 		findOptions (parent) {
