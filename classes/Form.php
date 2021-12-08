@@ -381,7 +381,7 @@ class Form extends Block
                 'slug' => $requestId,
                 'template' => 'formrequest',
                 'content' => [
-                    'received' => strftime('%x %X'),
+                    'received' => date('Y-m-d H:i:s', time()),
                     'formdata' => $formdata
                 ]
             ]);
@@ -435,7 +435,7 @@ class Form extends Block
 
             site()->kirby()->email($emailData);
 
-            $this->updateRequest(['notify-send' => strftime('%x %X')]);
+            $this->updateRequest(['notify-send' => date('Y-m-d H:i:s', time())]);
 
         } catch (\Throwable $error) {
             $this->setError("Error sending notification: " . $error->getMessage());
@@ -479,7 +479,7 @@ class Form extends Block
             ]);
 
             //TODO: After Confirmation
-            $this->updateRequest(['confirm-send' => strftime('%x %X')]);
+            $this->updateRequest(['confirm-send' => date('Y-m-d H:i:s', time())]);
             
         } catch (\Throwable $error) {
             $this->setError("Error sending confirmation: " . $error->getMessage());
