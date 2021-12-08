@@ -71,7 +71,11 @@ export default {
         value: {
             type: [String],
             default: ""
-        }
+        },
+        dateformat: {
+            type: String,
+            default: "DD.MM.YYYY HH:mm"
+        },
     },
     data () {
         return {
@@ -97,7 +101,7 @@ export default {
                 req.status = this.getStatus(req);
                 req.tooltip = this.getTooltip(req);
                 let thisDate = this.$library.dayjs(req.received, 'YYYY-MM-DD HH:mm:ss')
-                req.desc = thisDate.isValid() ? thisDate : "";
+                req.desc = thisDate.isValid() ? thisDate.format(this.dateformat) : "";
                 req.title = this.getLabel(req);
                 list.push(req);
             }

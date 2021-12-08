@@ -103,7 +103,7 @@ use Kirby\Http\Server;
 
                     $this->site()->formRequests($this->requestQuery('form'))
                         ->find($this->requestQuery('request'))->update(
-                            ['read' => ($this->requestQuery('state') == "false") ? "" : date('Y-m-d H:i:s')]
+                            ['read' => ($this->requestQuery('state') == "false") ? "" : date('Y-m-d H:i:s', time())]
                         );
 
                     return $this->site()->formRequests($this->requestQuery('form'), true)->toArray();

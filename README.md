@@ -171,7 +171,7 @@ Default: `no-reply@[the root url of your website]`
 
 > If the domain is differ form the websites domain [check the DMARC](https://de.wikipedia.org/wiki/DMARC) to ensure that the emails will not rejected.
 
-> Information for localhost environment: form_email is there required. A proper outgoing of the emails can still not be guaranteed.
+> You probably get an SMTP-Error on localhost environment. Test the email function on a server!
 
 ### Placeholders
 
