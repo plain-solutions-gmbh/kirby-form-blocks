@@ -236,7 +236,7 @@ class FormField extends Block
      */
     public function isFilled(): bool
     {
-        return $this->fields->isFilled();
+        return $this->isFilled;
     }
 
     /**
