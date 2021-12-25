@@ -64,7 +64,7 @@ fields:
   text:
     type: blocks
     fieldsets:
-      - block
+      - form
       ...
 ```
 
