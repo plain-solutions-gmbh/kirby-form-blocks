@@ -1,6 +1,6 @@
 <?php if ($form->showForm()) : ?>
 
-    <form method="post" id="<?= $form->id() ?>" action="<?= $page->url() . "#" . $form->id() ?>">
+    <form method="post" id="<?= $form->id() ?>" action="<?= $page->url() . "#" . $form->id() ?>" novalidate>
 
         <div class="form-block grid">
 
