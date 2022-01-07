@@ -1,10 +1,10 @@
 
 <input
     type="<?= $formfield->inputtype() ?>"
-    id="<?= $formfield->slug() ?>"
+    id="input-<?= $formfield->slug() ?>-<?= $formfield->id() ?>"
     name="<?= $formfield->slug() ?>"
     value="<?= $formfield->value() ?>"
     <?= e($formfield->required()->isTrue(), "required") ?>
     <?= e($formfield->isInvalid(), "invalid") ?>
-    <?= e($formfield->isInvalid(), "aria-describedby='" . $formfield->slug() . "-error-message'") ?>
+    <?= e($formfield->isInvalid(), "aria-describedby='input-" . $formfield->slug() . '-' . $formfield->id() . "-error-message'") ?>
     />

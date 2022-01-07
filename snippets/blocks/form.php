@@ -8,7 +8,7 @@
                 <?php $fieldTag = $isFieldGroup ? 'fieldset' : 'div' ?>
                 <?php $fieldGroupLabelTag = $isFieldGroup ? 'legend' : 'label' ?>
                 <<?= $fieldTag ?> class="form-block-field form-block-field-<?= $field->type(true) ?>" style="grid-column: span <?= $field->width('grid') ?>" data-id="<?= $field->slug() ?>">
-                    <<?= $fieldGroupLabelTag ?> for="<?= $field->slug() ?>" class="form-block-field-label">
+                    <<?= $fieldGroupLabelTag ?> for="input-<?= $field->slug() ?>-<?= $field->id() ?>" class="form-block-field-label">
                         <span class="form-block-field-label-text"><?= $field->label() ?></span>
                         <?php if ($field->required()->isTrue()) : ?>
                             <span class="form-block-field-label-required" aria-hidden="true">*</span>
@@ -17,7 +17,7 @@
 
 
                     <?php if (!$field->isValid()) : ?>
-                        <span id="<?= $field->slug() ?>-error-message" class="form-block-message form-block-field-invalid"><?= $field->errorMessage() ?></span>
+                        <span id="input-<?= $field->slug() ?>-<?= $field->id() ?>-error-message" class="form-block-message form-block-field-invalid"><?= $field->errorMessage() ?></span>
                     <?php endif ?>
 
                     <?= $field->toHtml() ?>

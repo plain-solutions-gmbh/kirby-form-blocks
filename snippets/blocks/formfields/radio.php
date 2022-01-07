@@ -3,8 +3,8 @@
     <?php foreach ($formfield->options() as $option) : ?>
 
         <div class="column form-block-field-option" style="grid-column: span <?= $formfield->columns('grid') ?>">
-            <label for="<?= $option->slug() ?>">
-                <input type="radio" id="<?= $option->slug() ?>" name="<?= $formfield->slug() ?>" value="<?= $option->slug() ?>" <?= e($option->selected()->isTrue(), " checked") ?><?= e($formfield->required()->isTrue(), " required") ?>>
+            <label for="input-<?= $option->slug() ?>-<?= $formfield->id() ?>">
+                <input type="radio" id="input-<?= $option->slug() ?>-<?= $formfield->id() ?>" name="<?= $formfield->slug() ?>" value="<?= $option->slug() ?>" <?= e($option->selected()->isTrue(), " checked") ?><?= e($formfield->required()->isTrue(), " required") ?>>
                 <?= $option->label() ?>
             </label>
         </div>
