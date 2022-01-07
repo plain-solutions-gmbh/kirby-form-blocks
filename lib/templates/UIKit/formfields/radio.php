@@ -11,7 +11,7 @@
 
         <div class="form-block-field-option uk-width-1-1 uk-width-<?= $formfield->columns('dash') ?>@m">
             <label for="<?= $option->slug() ?>">
-                <input class="uk-radio<?= $fieldclass?>" type="radio" id="<?= $option->slug() ?>" name="<?= $formfield->slug() ?>" value="<?= $option->slug() ?>" <?= e($option->selected()->isTrue(), " checked") ?>>
+                <input class="uk-radio<?= $fieldclass ?>" type="radio" id="<?= $option->slug() ?>" name="<?= $formfield->slug() ?>" value="<?= $option->slug() ?>" <?= e($option->selected()->isTrue(), " checked") ?><?= e($formfield->required()->isTrue(), " required") ?>>
                 <?= $option->label() ?>
             </label>
         </div>

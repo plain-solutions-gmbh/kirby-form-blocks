@@ -5,4 +5,4 @@ if ($formfield->isFilled()) {
 }
 ?>
 
-<textarea class="uk-textarea<?= $fieldclass ?>" id="<?= $formfield->slug() ?>" name="<?= $formfield->slug() ?>" rows="<?= $formfield->row() ?>" placeholder="<?= $formfield->placeholder() ?>"><?= $formfield->value() ?></textarea>
+<textarea class="uk-textarea<?= $fieldclass ?>" id="<?= $formfield->slug() ?>" name="<?= $formfield->slug() ?>" rows="<?= $formfield->row() ?>" placeholder="<?= $formfield->placeholder() ?>" <?= e($formfield->required()->isTrue(), " required") ?>><?= $formfield->value() ?></textarea>

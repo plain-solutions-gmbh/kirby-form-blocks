@@ -1,4 +1,4 @@
-<select name="<?= $formfield->slug() ?>" id="<?= $formfield->slug() ?>">
+<select name="<?= $formfield->slug() ?>" id="<?= $formfield->slug() ?>" <?= e($formfield->required()->isTrue(), " required") ?>>
 
     <option value="" disabled <?= e($formfield->value() == "", ' selected') ?>><?= $formfield->placeholder() ?></option>
 
