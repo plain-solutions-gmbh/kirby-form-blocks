@@ -23,7 +23,7 @@
                     <?php endif ?>
 
                     <?php if (!$field->isValid()) : ?>
-                        <span class="form-block-message form-block-field-invalid"><?= $field->errorMessage() ?></span>
+                        <span id="<?= $field->slug() ?>-error-message" class="form-block-message form-block-field-invalid"><?= $field->errorMessage() ?></span>
                     <?php endif ?>
 
                     <?= $field->toHtml() ?>

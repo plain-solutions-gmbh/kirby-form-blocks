@@ -1,4 +1,4 @@
-<select name="<?= $formfield->slug() ?>" id="<?= $formfield->slug() ?>" <?= e($formfield->required()->isTrue(), " required") ?>>
+<select name="<?= $formfield->slug() ?>" id="<?= $formfield->slug() ?>" <?= e($formfield->required()->isTrue(), " required") ?> <?= e($formfield->isInvalid(), "invalid") ?> <?= e($formfield->isInvalid(), "aria-describedby='" . $formfield->slug() . "-error-message'") ?>>
 
     <option value="" disabled <?= e($formfield->value() == "", ' selected') ?>><?= $formfield->placeholder() ?></option>
 
