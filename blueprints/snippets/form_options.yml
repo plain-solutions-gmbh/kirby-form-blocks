@@ -31,3 +31,19 @@ fatal_message:
 send_button:
   label: form.block.options.send_button
   type: text
+
+honeypot:
+  type: toggle
+  label: form.block.options.honeypot
+  width: 1/3
+  default: false
+
+honeypot_name:
+  type: text
+  label: form.block.options.honeypot_name
+  width: 2/3
+  required: true
+  default: "website"
+  placeholder: "website"
+  when:
+    honeypot: true

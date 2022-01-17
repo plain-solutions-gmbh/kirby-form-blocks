@@ -4,6 +4,13 @@
 
 		<div class="form-block" uk-grid>
 
+            <?php if($form->honeypot()->isTrue()) : ?>
+                <div class="form-block-honeypot" style="position: absolute; left: -9999px;">
+                    <label for="form-<?= $form->id() ?>-<?= $form->honeypot_name() ?>">Website <abbr title="required">*</abbr></label>
+                    <input type="url" id="form-<?= $form->id() ?>-<?= $form->honeypot_name() ?>" name="<?= $form->honeypot_name() ?>" tabindex="-1" aria-hidden="true">
+                </div>
+            <?php endif ?>
+
 			<?php foreach ($form->fields() as $field) : ?>
 
 				<div class="form-block-field form-block-field-<?= $field->type(true) ?> uk-width-1-1 uk-width-<?= $field->width('dash') ?>@m" id="<?= $field->slug() ?>">

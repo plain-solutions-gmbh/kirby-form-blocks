@@ -89,6 +89,8 @@ return [
 	'form.block.options'   					=> 'Sendeoptionen',
 	'form.block.options.info'   			=> "**Mit *\{\{  \}\}* können Sie eingehende Werte mittels Bezeichner einfügen.**\n",
 	'form.block.options.enable_notify'   	=> "Benachrichtigung senden",
+    'form.block.options.honeypot'           => "Honeypot Spamschutz",
+    'form.block.options.honeypot_name'      => "Honeypot Feldname",
 	'form.block.options.notify_email'		=> "Empfängeradresse",
 	'form.block.options.notify_subject'		=> "Betreffzeile",
 	'form.block.options.notify_body'		=> "Nachricht",

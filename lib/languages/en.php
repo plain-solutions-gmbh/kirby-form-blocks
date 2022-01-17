@@ -88,6 +88,8 @@ return [
 
 	'form.block.options' 						=> 'Options',
 	'form.block.options.enable_notify' 			=> "Send notification",
+    'form.block.options.honeypot'               => "Honeypot spam protection",
+    'form.block.options.honeypot_name'          => "Honeypot field name",
 	'form.block.options.notify_email' 			=> "Recipient address",
 	'form.block.options.notify_subject' 		=> "Subject",
 	'form.block.options.notify_body' 			=> "Message",
