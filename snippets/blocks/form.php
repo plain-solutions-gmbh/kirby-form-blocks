@@ -2,6 +2,11 @@
     <form method="post" id="<?= $form->id() ?>" action="<?= $page->url() . "#" . $form->id() ?>" novalidate>
 
         <div class="form-block" style="display:grid;grid-gap: 1em 0.5em; grid-template-columns: repeat(12, 1fr);">
+            <?php if (!$form->isValid()) : ?>
+                <div class="form-block-message form-block-invalid column" style="grid-column: span 12">
+                    <?= $form->errorMessage() ?>
+                </div>
+            <?php endif ?>
 
             <?php foreach ($form->fields() as $field) : ?>
                 <?php $isFieldGroup = ($field->type() === 'formfields/radio' || $field->type() === 'formfields/checkbox') ?>
@@ -23,12 +28,6 @@
                     <?= $field->toHtml() ?>
                 </<?= $fieldTag ?>>
             <?php endforeach ?>
-
-            <?php if (!$form->isValid()) : ?>
-                <div class="form-block-message form-block-invalid column" style="grid-column: span 12">
-                    <?= $form->errorMessage() ?>
-                </div>
-            <?php endif ?>
 
             <div class="form-block-button form-block-submit column" style="grid-column: span 12">
                 <input type="submit" name="<?= $form->id() ?>" value="<?= $form->message('send_button') ?>">

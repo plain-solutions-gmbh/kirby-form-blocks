@@ -3,6 +3,11 @@
     <form method="post" id="<?= $form->id() ?>" action="<?= $page->url() . "#" . $form->id() ?>" novalidate>
 
         <div class="form-block grid">
+            <?php if (!$form->isValid()) : ?>
+                <div class="form-block-message form-block-invalid column" style="--columns: 12">
+                    <?= $form->errorMessage() ?>
+                </div>
+            <?php endif ?>
 
             <?php foreach ($form->fields() as $field) : ?>
 
@@ -33,12 +38,6 @@
                 </div>
 
             <?php endforeach ?>
-
-            <?php if (!$form->isValid()) : ?>
-                <div class="form-block-message form-block-invalid column" style="--columns: 12">
-                    <?= $form->errorMessage() ?>
-                </div>
-            <?php endif ?>
 
             <div class="form-block-button form-block-submit column" style="--columns: 12">
                 <input type="submit" name="<?= $form->id() ?>" value="<?= $form->message('send_button') ?>">
