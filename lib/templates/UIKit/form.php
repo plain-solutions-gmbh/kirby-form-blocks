@@ -33,7 +33,7 @@
 
 <?php if ($form->isFatal()) : ?>
 
-	<div class="uk-width-1-1">
+	<div id="<?= $form->id() ?>" class="uk-width-1-1">
 		<div class="uk-alert-danger form-block-message form-block-error" uk-alert>
 			<?= $form->errorMessage() ?>
 		</div>
@@ -43,7 +43,7 @@
 
 <?php if ($form->isSuccess()) : ?>
 
-	<div class="uk-width-1-1">
+	<div id="<?= $form->id() ?>" class="uk-width-1-1">
 		<div class="uk-alert-success form-block-message form-block-success" uk-alert>
 			<?= $form->successMessage() ?>
 		</div>

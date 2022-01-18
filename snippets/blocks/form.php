@@ -35,13 +35,13 @@
 <?php endif ?>
 
 <?php if ($form->isFatal()) : ?>
-	<div class="form-block-message form-block-fatal column">
+	<div id="<?= $form->id() ?>" class="form-block-message form-block-fatal column">
 		<?= $form->errorMessage() ?>
 	</div>
 <?php endif ?>
 
 <?php if ($form->isSuccess()) : ?>
-	<div class="form-block-message form-block-success column">
+	<div id="<?= $form->id() ?>" class="form-block-message form-block-success column">
 		<?= $form->successMessage() ?>
 	</div>
 <?php endif ?>
