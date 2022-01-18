@@ -126,7 +126,11 @@ class Form extends Block
      */
     private function parseString($value): string
     {
-        return (is_string($value)) ? $value : $value->value();
+        if (!(is_null($value))) {
+            return (is_string($value)) ? $value : $value->value();
+        }
+
+        return null;
     }
 
     /**
@@ -143,15 +147,19 @@ class Form extends Block
             return $this->fields()->$slug();
         }
         
-        if (!is_array($attrs)) {
-            return $this->parseString($this->fields->$slug()->$attrs());
-        } else {
-            $result = [];
-            foreach ($attrs as $attr) {
-                $result[$attr] = $this->parseString($this->fields->$slug()->$attr());
+        if ($field = $this->fields->$slug()) {
+            if (!is_array($attrs)) {
+                return $this->parseString($field->$attrs());
+            } else {
+                $result = [];
+                foreach ($attrs as $attr) {
+                    $result[$attr] = $this->parseString($field->$attr());
+                }
+                return $result;
             }
-            return $result;
         }
+
+        return null;
     }
 
     /**
