@@ -123,7 +123,7 @@ fields:
     type: writer
 ```
 
-_site/snippets/formfields/info.php_
+_site/snippets/blocks/formfields/info.php_
 ```xml
 <div class="info-field" id="<?= $formfield->slug() ?>" style="background:<?= $formfield->color() ?>">
     
