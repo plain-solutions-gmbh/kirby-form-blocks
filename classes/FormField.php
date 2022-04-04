@@ -245,7 +245,7 @@ class FormField extends Block
      * 
      * @return array
      */
-    public function validator(): array
+    private function validator(): array
     {
 
         if (!$this->isFilled)

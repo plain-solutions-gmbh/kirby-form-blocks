@@ -166,15 +166,15 @@ Each form field has by default following fields:
 
 Let's make an example and adding a field for the width:
 
-_site/blueprints/blocks/formfields/info.yml_
+_site/blueprints/blocks/customfields.yml_
 ```yml
 width:
   label: Width
   type: select
   options:
-    col-12: "full width"
-    col-6: "half width"
-    col-4: "third width"
+    col-12: "1/1"
+    col-6: "1/2"
+    col-4: "1/3"
 
 ```
 
