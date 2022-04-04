@@ -20,13 +20,6 @@ class Form extends Block
     protected $fields;
 
     /**
-     * Messages from blockfields
-     *
-     * @var array
-     */
-    protected $message;
-
-    /**
      * Errormessage - if occur
      *
      * @var string
@@ -50,13 +43,18 @@ class Form extends Block
         parent::__construct($this->setDefault($params));
 
         //Hands away from panel!
-        if(preg_match('(api|panel)', $_SERVER['REQUEST_URI']) > 0) {
-            return null;
+        if (preg_match('(api|panel)', $_SERVER['REQUEST_URI']) > 0) {
+            return false;
+            //$this->validateBackend($this->formfields()->toBlocks()->toArray());
         }
 
         $this->fields = new FormFields($this->formfields()->toBlocks()->toArray(), $this->parent(), $this->id());
-        $this->message = $this->content()->toArray();
 
+        //Resolve Honeypot
+        if (!$this->fields->checkHoneypot($this->honeypotId())) {
+            $this->setError("Trapped into honeypot");
+        };
+        
         $this->runProcess();
     }
 
@@ -113,6 +111,25 @@ class Form extends Block
         return $params;
     }
 
+    /**
+     * Validate Backend
+     * 
+     * @param array $formdata
+     * 
+     * @return bool
+     */
+    private function validateBackend (array $formdata): bool
+    {
+        $slugs = [];
+
+        foreach ($formdata as $field) {            
+            array_push($slugs, $field['content']['slug']);
+        }
+
+        return true;
+
+    }
+
     /**********************/
     /** Formdata Methods **/
     /**********************/
@@ -126,7 +143,11 @@ class Form extends Block
      */
     private function parseString($value): string
     {
-        return (is_string($value)) ? $value : $value->value();
+        if (!(is_null($value))) {
+            return (is_string($value)) ? $value : $value->value();
+        }
+
+        return null;
     }
 
     /**
@@ -142,16 +163,19 @@ class Form extends Block
         if (is_null($attrs)) {
             return $this->fields()->$slug();
         }
-        
-        if (!is_array($attrs)) {
-            return $this->parseString($this->fields->$slug()->$attrs());
-        } else {
-            $result = [];
-            foreach ($attrs as $attr) {
-                $result[$attr] = $this->parseString($this->fields->$slug()->$attr());
+
+        if ($field = $this->fields->$slug()) {
+            if (!is_array($attrs)) {
+                return $this->parseString($field->$attrs());
+            } else {
+                $result = [];
+                foreach ($attrs as $attr) {
+                    $result[$attr] = $this->parseString($field->$attr());
+                }
+                return $result;
             }
-            return $result;
         }
+        return null;
     }
 
     /**
@@ -194,6 +218,22 @@ class Form extends Block
         }
 
         return array_merge($this->fields($attr), $fields);
+    }
+
+    /**
+     * Get honeypot name
+     * 
+     * @return string
+     */
+    public function honeypotId(): string
+    {
+        $out = option('microman.formblock.honeypot_variants');
+
+        foreach ($this->fields() as $field) {
+            $out = array_diff($out, [$field->autofill(), $field->slug()]);
+        }
+
+        return count($out) > 0 ? $out[1] : "honeypot";
     }
 
     /************************/
@@ -241,13 +281,24 @@ class Form extends Block
     }
 
     /**
+     * Get error fields
+     * 
+     * @param string|NULL $separator Unset returns Array
+     * @return string|array
+     */
+    public function errorFields($separator = NULL)
+    {
+        return $this->fields->errorFields($separator);
+    }
+    
+    /**
      * Check if form could shown
      * 
      * @return bool
      */
     public function showForm(): bool
     {
-        return (!$this->isFilled() || !$this->isValid());
+        return (!$this->isFilled() || !$this->isValid()) && !$this->isFatal();
     }
 
 
@@ -265,12 +316,13 @@ class Form extends Block
      */
     public function message($key, $replaceArray = []): string
     {
-        if (!array_key_exists($key, $this->message ))
-            return "-";
 
-        $replaceArray = A::merge($this->fieldsWithPlaceholder('value'), $replaceArray);
+        $text = $this->__call($key)
+                ->or(option('microman.formblock.translations.' . I18n::locale() . '.' .$key))
+                ->or(I18n::translate('form.block.' . $key));
 
-        return Str::template($this->message[$key], $replaceArray);
+        return Str::template($text, A::merge($this->fieldsWithPlaceholder('value'), $replaceArray));
+
     }
 
     /**
@@ -280,9 +332,6 @@ class Form extends Block
      */
     public function errorMessage(): string
     {
-        //No error when not filled
-        if (!$this->isFilled())
-            return "";
 
         //Return fatal-error if there is one
         if ($this->isFatal())
@@ -290,7 +339,7 @@ class Form extends Block
 
         //Return invalid-message if form invalid
         if (!$this->isValid())
-            return $this->message('invalid_message', ['fields' => $this->fields->errorFields(', ')]);
+            return $this->message('invalid_message', ['fields' => $this->errorFields(', ')]);
     }
 
     /**
@@ -367,11 +416,16 @@ class Form extends Block
 
         $container = $this->getRequestContainer();
         $formdata = json_encode($this->fieldsWithPlaceholder());
+
+        if (!option('microman.formblock.verify_content')) {
+            $formdata .= date('YmdHis', time());
+        }
+
         $requestId = md5($formdata);
 
         //The request with that values already exists
         if ($container->drafts()->find($requestId))
-            return I18n::translate('form.error.exists');
+            return $this->message('exists_message');
 
         try {
             site()->kirby()->impersonate('kirby');
@@ -397,7 +451,7 @@ class Form extends Block
     /******************/
 
     /**
-     * Send confirmation email to visitor - returns error message if failed
+     * Send notification email to operator - returns error message if failed
      *
      * @param string|NULL $body Mailtext - set custom notification body if not set
      * @param string|NULL $recipent Recipent - set custom notification email if not set

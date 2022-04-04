@@ -5,16 +5,6 @@ fields:
   placeholder:
     label: form.block.fromfields.select.placeholder
     type: text
-    width: 1/2
-
-  default:
-    label: form.block.fromfields.select.default
-    type: selectoption
-    width: 1/2
-    help: form.block.fromfields.select.default.help
-    structurename: options
-    fieldValue: slug
-    fieldText: name
 
   options:
     label: form.block.fromfields.select.options
@@ -23,17 +13,26 @@ fields:
     columns:
       label:
         type: text
+      selected:
+        type: bool
 
     fields:
       label:
         label: form.block.fromfields.select.options.label
         type: text
         required: true
-        width: 1/2
+        width: 1/3
 
       slug:
         label: form.block.fromfields.select.options.slug
         type: slug
-        sync: label
+        wizard:
+          text: " "
+          field: label
         required: true
-        width: 1/2
+        width: 1/3
+
+      selected:
+        label: form.block.fromfields.checkbox.options.selected
+        type: toggle
+        width: 1/3

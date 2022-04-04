@@ -6,6 +6,7 @@ use Kirby\Cms\Block;
 use Kirby\Toolkit\A;
 use Kirby\Toolkit\V;
 use Kirby\Toolkit\Str;
+use Kirby\Toolkit\I18n;
 use Kirby\Toolkit\Escape;
 
 class FormField extends Block
@@ -68,18 +69,22 @@ class FormField extends Block
      */
     private function setOptions(array $field): array
     {
-        $options = [];
-        foreach ($field['content']['options'] as $option) {
-         
-            if ($field['type'] == 'formfields/checkbox' && $field['isFilled']) {
-                $option['selected'] = in_array($option['slug'], array_keys($this->request())) ;
-            } else if ($field['type'] != 'formfields/checkbox') {
-                $default = isset($field['content']['default']) ? $field['content']['default'] : "";
-                $option['selected'] = $field['isFilled'] ? ($this->request($field['content']['slug']) ==  $option['slug']) : $default  == $option['slug'];
-            }
-            array_push($options, $option);
+        if (!$field['isFilled']) {
+            return $field['content']['options'];
         }
-        return $options;
+
+        return array_map(function ($option) use ($field) {
+
+            if ($field['type'] == 'formfields/checkbox') {
+                $option['selected'] = in_array($option['slug'], array_keys($this->request()));
+            } else {
+                $option['selected'] = $this->request($field['content']['slug']) ==  $option['slug'];
+            }
+
+            return $option;
+
+        }, $field['content']['options']);
+
     }
 
     /**
@@ -119,59 +124,55 @@ class FormField extends Block
     }
 
     /**
-     * Convert width
+     * Get Autofill
      *
-     * @param string $kind Example (1/4) grid:3, slash:1/4, dash:1-4 
+     * @param bool return with attribute
      * 
      * @return string|null
      */
-    public function width($kind = 'slash')
+    public function autofill($html = false)
     {
-        $val = $this->content()->width();
+        $val = $this->content()->autofill();
 
-        if ($val == NULL) {
-            return;
-        }
+        if (!$html) return $val;
+        if (!$val->isEmpty()) return ' autocomplete="' . $val . '"';
 
-        if ($kind == 'dash') {
-            return str_replace('/', '-', $val);
-        }
-
-        if ($kind == 'grid') {
-                return [
-                    "1_1" => 12,
-                    "1_2" => 6,
-                    "1_3" => 4,
-                    "1_4" => 3,
-                    "2_3" => 8,
-                    "3_4" => 9
-                ][str_replace('/', '_', $val)];
-        };
-        
-        return $val;
+        return "";
     }
 
     /**
-     * Convert columns
+     * Get Aria Error Atribute
      *
-     * @param string $kind Example (1/4) grid:3, slash:1/4, dash:1-4 
      * 
      * @return string|null
      */
-    public function columns($kind = "grid")
+    public function ariaAttr()
     {
-        $val = $this->content()->columns()->value();
+        if ($this->isValid()) return "";
+        return 'invalid aria-describedby="' . $this->id() . '-error-message"';
 
-        if ($kind == 'grid') {
-            return ($val > 0) ? 12 / $val : 1;
-        }
-
-        if ($kind == 'slash' && $val > 0) {
-            return ($val > 0) ? "1/" . $val : 1;
-        }
-
-        return ($val > 0) ? "1-" . $val : 1;;
     }
+
+    /**
+     * Get required
+     *
+     * @param bool|string return with attribute
+     * 
+     * @return string|bool
+     */
+    public function required($html = false)
+    {
+        if (!$html) {
+            return $this->content()->required()->isTrue();
+        }
+
+        if ($this->content()->required()->isTrue()) {
+            if ($html === 'asterisk') return '*';
+            if ($html === 'attr') return ' required';
+        }
+        return "";
+    }
+
 
     /**
      * Convert type
@@ -252,8 +253,13 @@ class FormField extends Block
             
         $validator = $this->validate()->toStructure()->toArray();
 
-        if ($this->required()->isTrue())
-            array_push($validator, ['validate' => 'different', 'different' => '', 'msg' => $this->required_fail()->toString()]);
+        if ($this->required()) {
+            $msg = $this->required_fail()
+            ->or(option('microman.formblock.translations.' . I18n::locale() . 'field_message'))
+            ->or(I18n::translate('form.block.field_message'));
+            
+            array_push($validator, ['validate' => 'different', 'different' => '', 'msg' => $msg]);
+        }
 
         return $validator;
     }

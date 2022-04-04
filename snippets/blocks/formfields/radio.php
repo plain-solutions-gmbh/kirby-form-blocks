@@ -1,10 +1,19 @@
-<div class="column form-block-field-options" style="display:grid;grid-gap: 1em 0.5em; grid-template-columns: repeat(12, 1fr);">
+<div class="column form-block-field-options">
 
     <?php foreach ($formfield->options() as $option) : ?>
 
-        <div class="column form-block-field-option" style="grid-column: span <?= $formfield->columns('grid') ?>">
-            <label for="<?= $option->slug() ?>">
-                <input type="radio" id="<?= $option->slug() ?>" name="<?= $formfield->slug() ?>" value="<?= $option->slug() ?>" <?= e($option->selected()->isTrue(), " checked") ?>>
+        <div class="column form-block-field-option" >
+            <label for="<?= $formfield->id() . '-' . $option->slug() ?>">
+                <input
+                    type="radio"
+                    id="<?= $formfield->id() . '-' . $option->slug() ?>"
+                    name="<?= $formfield->slug() ?>"
+                    value="<?= $option->slug() ?>"
+                    <?= $formfield->autofill(true) ?>
+                    <?= e($option->selected()->isTrue(), " checked") ?>
+                    <?= $formfield->required('attr') ?>
+                    <?= $formfield->ariaAttr() ?>
+                >
                 <?= $option->label() ?>
             </label>
         </div>

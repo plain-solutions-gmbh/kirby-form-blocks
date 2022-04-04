@@ -7,6 +7,7 @@ use Kirby\Filesystem\F;
 use Kirby\Data\Yaml;
 
 
+
 class FormBlueprint
 {
 
@@ -17,15 +18,18 @@ class FormBlueprint
      * 
      * @return array
      */
-    public static function getBlueprint(String $path): array
+    public static function getBlueprint(String $path, Bool $merge = false): array
     {
+
+        $plugindata = Yaml::read(__DIR__ . "/../blueprints/$path.yml");
         $userfile = kirby()->root('blueprints') . "/$path.yml";
         if (F::exists($userfile)) {
-            return Yaml::read($userfile);
+            return $merge ? array_merge($plugindata, Yaml::read($userfile)) : Yaml::read($userfile);
         }
-        return Yaml::read(__DIR__ . "/../blueprints/$path.yml");
 
+        return $plugindata;
     }
+
 
 
     /**
@@ -83,10 +87,9 @@ class FormBlueprint
                     ],
                     'info' => static::getInfoText()
                 ],
-                (static::isEnabled('notify')) ?  static::getBlueprint('snippets/form_notify') : [],
-                (static::isEnabled('confirm')) ?  static::getBlueprint('snippets/form_confirm') : [],
-                static::getBlueprint('snippets/form_options',
-                )
+                (static::isEnabled('notify')) ?  Yaml::read(__DIR__ . "/../blueprints/snippets/form_notify.yml") : [],
+                (static::isEnabled('confirm')) ?  Yaml::read(__DIR__ . "/../blueprints/snippets/form_confirm.yml") : [],
+                static::getBlueprint('snippets/form_options')
             )
         ];
     }
@@ -117,7 +120,8 @@ class FormBlueprint
     private static function getFormfields(): array
     {
 
-        $customfields = static::getBlueprint('blocks/customfields');
+        $customfields = static::getBlueprint('blocks/customfields', true);
+
         $out = [];
 
         //Get formfields of the plugin

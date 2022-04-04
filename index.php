@@ -15,9 +15,29 @@ use Kirby\Http\Server;
     'options' => [
         'from_email' => 'no-reply@' . Server::host(),
         'placeholders' => FormBlueprint::getPlaceholders(),
+        'honeypot_variants' => ["email", "name", "url", "tel", "given-name", "family-name", "street-address", "postal-code", "address-line2", "address-line1", "country-name", "language", "bday"],
         'disable_inbox' => false,
         'disable_confirm' => false,
         'disable_notify' => false,
+        'verify_content' => true,
+        'translations' => [
+            'en' => [
+                'success_message' => 'Thank you {{ given-name }}. We will get back to you as soon as possible.',
+                'fatal_message'  => 'Something went wrong. Contact the administrator or try again later.',
+                'field_message'  => 'This field is required.',
+                'invalid_message' => 'Please check these fields: {{ fields }}.',
+                'exists_message' => 'The form has already been filled in.',
+                'send_button'  => 'Send',
+            ],
+            'de' => [
+                'success_message' => 'Danke {{ given-name }}. Wir werden uns schnellst möglich bei dir melden.',
+                'fatal_message'  => 'Es ist etwas schief gelaufen. Kontaktieren Sie den Administrator oder versuchen Sie es später noch einmal.',
+                'field_message'  => 'Dieses Feld ist erforderlich.',
+                'invalid_message' => 'Bitte überprüfen Sie diese Felder: {{ fields }}.',
+                'exists_message' => 'Das Formular wurde bereits ausgefüllt.',
+                'send_button'  => 'Senden',
+            ]
+        ]
     ],
     'blueprints' => [
         'blocks/form' => [
@@ -41,6 +61,9 @@ use Kirby\Http\Server;
         'blocks/formfields/textarea' => __DIR__ . '/snippets/blocks/formfields/textarea.php'
     ],
     'hooks' => [
+        'page.update:before' => function ($page, $values, $strings) {
+            
+        },
         // TODO: Add Hooks
     ],
     'fields' => [
@@ -50,9 +73,6 @@ use Kirby\Http\Server;
                     return false;
                 }
             ],
-        ],        
-        'selectoption' => [
-            'props' => []
         ],
     ],
     'blockModels' => [

@@ -15,12 +15,13 @@ confirm_subject:
   width: 1/2
   when:
     enable_confirm: true
-    
+
 confirm_body:
   label: form.block.options.confirm_body
   type: writer
   when:
     enable_confirm: true
+
 
 line2:
   type: line

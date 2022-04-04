@@ -1,11 +1,9 @@
 import Form from "./components/blocks/Form.vue";
-import SelectOption from "./components/fields/SelectOption.vue";
 import MailView from "./components/fields/MailView.vue";
 
 window.panel.plugin("microman/form-blocks", {
     fields: {
         mailview: MailView,
-        selectoption: SelectOption
     },
     blocks: {
         form: Form

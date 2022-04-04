@@ -2,13 +2,6 @@ name: form.block.fromfields.checkbox
 icon: check
 
 fields:
-  columns:
-    label: form.block.fromfields.checkbox.columns
-    type: range
-    min: 1
-    max: 6
-    default: 3
-
   options:
     label: form.block.fromfields.checkbox.options
     type: structure
@@ -29,7 +22,9 @@ fields:
       slug:
         label: form.block.fromfields.checkbox.options.slug
         type: slug
-        sync: label
+        wizard:
+          text: " "
+          field: label
         required: true
         width: 1/3
 

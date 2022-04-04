@@ -108,4 +108,21 @@ class FormFields extends Blocks
         return $this->isFilled;
     }
 
+    /**
+     * Check if the bear grabs into the honeypot
+     * 
+     * @param string HoneypotID
+     * 
+     * @return bool
+     */
+    public function checkHoneypot($hpId): bool
+    {
+        if ((get($hpId) === NULL || get($hpId) !== "") && $this->isFilled()) {
+            $this->isFilled = false;
+            return false;
+        };
+        return true;
+
+    }
+
 }

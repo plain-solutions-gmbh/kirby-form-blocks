@@ -19,15 +19,3 @@ success_url:
   width: 2/3
   when:
     redirect: true
-
-invalid_message:
-  label: form.block.options.invalid_message
-  type: writer
-
-fatal_message:
-  label: form.block.options.fatal_message
-  type: writer
-
-send_button:
-  label: form.block.options.send_button
-  type: text

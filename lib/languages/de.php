@@ -18,17 +18,18 @@ return [
 	'form.block.inbox.tooltip.unread' 		=> 'Diese Anfrage wurde noch nicht gelesen',
 	'form.block.inbox.notinblock'    		=> 'Das Mailview-Feld darf nur in Form Blocks verwendet werden',
 
-	'form.block.fromfields'    				=> 'Formularfelder',
-	'form.block.fromfields.label'  			=> 'Anzeigename',
-	'form.block.fromfields.width'  			=> 'Breite',
-	'form.block.fromfields.width1'  		=> 'Volle Breite',
-	'form.block.fromfields.width2'  		=> 'Hälfte',
-	'form.block.fromfields.width3'  		=> 'Drittel',
-	'form.block.fromfields.width4'  		=> 'Viertel',
-	'form.block.fromfields.slug'    		=> 'Eindeutiger Bezeichner',
-	'form.block.fromfields.slug.help' 		=> "Vorschläge für den Bezeichner finden Sie <a href='https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete#values' target='_blank'>hier</a>.",
-	'form.block.fromfields.required'    	=> 'Erforderlich',
-	'form.block.fromfields.required_fail'	=> 'Fehlertext',
+	'form.block.fromfields'    						=> 'Formularfelder',
+	'form.block.fromfields.label'  					=> 'Anzeigename',
+	'form.block.fromfields.width'  					=> 'Breite',
+	'form.block.fromfields.width1'  				=> 'Volle Breite',
+	'form.block.fromfields.width2'  				=> 'Hälfte',
+	'form.block.fromfields.width3'  				=> 'Drittel',
+	'form.block.fromfields.width4'  				=> 'Viertel',
+	'form.block.fromfields.slug'    				=> 'Eindeutiger Bezeichner',
+	'form.block.fromfields.autofill'	 			=> "Kontext",
+	'form.block.fromfields.required'    			=> 'Erforderlich',
+	'form.block.fromfields.required_fail'			=> 'Fehlertext',
+	'form.block.fromfields.required_fail.help'		=> 'Leer lassen für Standarttext',
 
 	'form.block.fromfields.input'    					=> 'Textfeld',
 	'form.block.fromfields.input.inputtype'				=> 'Eingabetyp',
@@ -107,6 +108,11 @@ return [
 
 	'form.block.placeholdes.summary' 		=> "Zusammenfassung",
 
-	'form.error.exists'    					=> 'Das Formular wurde bereits ausgefüllt.',
-	'form.error.save'    					=> 'Das Formular konnte nicht gespeichert werden.'
+	'form.error.exists' 		=> 'Das Formular wurde bereits ausgefüllt.',
+	'form.error.field' 			=> 'Dieses Feld ist erforderlich.',
+	'form.error.fields' 		=> 'Bitte überprüfen Sie diese Felder: {{ fields }}.',
+	'form.error.save' 			=> 'Das Formular konnte nicht gespeichert werden.',
+	'form.error.fatal' 			=> 'Es ist etwas schief gelaufen. Kontaktieren Sie den Administrator oder versuchen Sie es später noch einmal.',
+	'form.button.send' 			=> 'Senden',
+
 ];

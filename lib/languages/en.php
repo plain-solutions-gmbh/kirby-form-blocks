@@ -18,17 +18,18 @@ return [
 	'form.block.inbox.tooltip.unread' 		=> 'This request has not been read yet',
 	'form.block.inbox.notinblock'    		=> 'The mail view field can only used in form blocks',
 
-	'form.block.fromfields' 				=> 'Form fields',
-	'form.block.fromfields.label' 			=> 'Display name',
-	'form.block.fromfields.width' 			=> 'Width',
-	'form.block.fromfields.width1' 			=> 'Full width',
-	'form.block.fromfields.width2' 			=> 'Half',
-	'form.block.fromfields.width3' 			=> 'Third',
-	'form.block.fromfields.width4' 			=> 'Quarter',
-	'form.block.fromfields.slug' 			=> 'Unique identifier',
-	'form.block.fromfields.slug.help' 		=> "Suggestions for the identifier can be found <a href='https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete#values' target='_blank'>here</a>.",
-	'form.block.fromfields.required' 		=> 'Required',
-	'form.block.fromfields.required_fail' 	=> 'Error text',
+	'form.block.fromfields' 							=> 'Form fields',
+	'form.block.fromfields.label' 						=> 'Display name',
+	'form.block.fromfields.width' 						=> 'Width',
+	'form.block.fromfields.width1' 						=> 'Full width',
+	'form.block.fromfields.width2' 						=> 'Half',
+	'form.block.fromfields.width3' 						=> 'Third',
+	'form.block.fromfields.width4' 						=> 'Quarter',
+	'form.block.fromfields.slug' 						=> 'Unique identifier',
+	'form.block.fromfields.autofill'	 				=> 'Context',
+	'form.block.fromfields.required' 					=> 'Required',
+	'form.block.fromfields.required_fail' 				=> 'Error text',
+	'form.block.fromfields.required_fail.help'			=> 'Leave blank for default text',
 
 	'form.block.fromfields.input' 						=> 'Textfield',
 	'form.block.fromfields.input.inputtype' 			=> 'Input type',
@@ -106,6 +107,16 @@ return [
 
 	'form.block.placeholdes.summary' 			=> "Summary",
 
-	'form.error.exists' 						=> 'The form has already been filled in.',
-	'form.error.save' 							=> 'The form could not be saved.'
+	'form.block.notify_subject'					=> 'Request from website.',
+	'form.block.notify_body'					=> '<p>{{ given-name }} send a request:</p><p>{{ summary }}</p>',
+	'form.block.confirm_subject'				=> 'Your request',
+	'form.block.confirm_body'					=> '<p>Thank you for your request, we will get back to you as soon as possible.</p>',
+	
+	'form.block.success_message'				=> '<p>Thank you {{ given-name }}. We will get back to you as soon as possible.</p>',
+	'form.block.fatal_message'					=> '<p>Something went wrong.<br>Contact the administrator or try again later.</p>',
+	'form.block.field_message'					=> 'This field is required.',
+	'form.block.invalid_message'				=> '<p>Please check these fields: {{ fields }}.</p>',
+	'form.block.exists_message'					=> '<p>The form has already been filled in.</p>',
+	'form.block.send_button'				 	=> 'Send',
+
 ];

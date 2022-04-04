@@ -3,6 +3,7 @@
     "description": "Contactform based on Kirby blocks. ",
     "type": "kirby-plugin",
     "license": "MIT",
+    "version": "2.0.0",
     "authors": [{
         "name": "Roman Gsponer",
         "email": "kirby@microman.ch"

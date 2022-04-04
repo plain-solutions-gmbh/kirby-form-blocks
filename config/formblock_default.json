@@ -4,8 +4,8 @@
         "formfields": [{
                 "content": {
                     "label": "First name",
-                    "width": "1/2",
                     "slug": "given-name",
+                    "autofill": "given-name",
                     "required": true,
                     "inputtype": "text",
                     "required_fail": "This field is required"
@@ -15,8 +15,8 @@
             {
                 "content": {
                     "label": "Last name",
-                    "width": "1/2",
                     "slug": "family-name",
+                    "autofill": "family-name",
                     "inputtype": "text"
                 },
                 "type": "formfields_01_input"
@@ -24,8 +24,8 @@
             {
                 "content": {
                     "label": "Email",
-                    "width": "1/1",
                     "slug": "email",
+                    "autofill": "email",
                     "required": false,
                     "inputtype": "email",
                     "validate": [{

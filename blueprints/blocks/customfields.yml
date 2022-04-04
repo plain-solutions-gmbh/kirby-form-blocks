@@ -4,26 +4,91 @@ label:
   type: text
   width: 1/2
 
-width:
-  label: form.block.fromfields.width
-  type: select
-  required: true
-  default: "1/1"
-  width: 1/2
-  options:
-    - "1/1"
-    - "1/2"
-    - "1/3"
-    - "1/4"
-    - "2/3"
-    - "3/4"
-
 slug:
   label: form.block.fromfields.slug
   type: slug
   required: true
-  sync: label
-  help: form.block.fromfields.slug.help
+  wizard:
+    text: " "
+    field: label
+  width: 1/2
+
+autofill:
+  label: form.block.fromfields.autofill
+  type: select
+  options:
+    name:
+        de: "Vollständiger Name"
+        en: "full name"
+    honorific-prefix:
+        de: "Anrede"
+        en: "honorific"
+    given-name:
+        de: "Vorname"
+        en: "first-name"
+    family-name:
+        de: "Nachname"
+        en: "family-name"
+    email:
+        de: "E-Mail"
+        en: "email"
+    tel:
+        de: "Telefonnummer"
+        en: "telephone number"
+    street-address:
+        de: "Adresse"
+        en: "address"
+    postal-code:
+        de: "Postleitzahl"
+        en: "postal-code"
+    address-line2:
+        de: "Ort"
+        en: "Location"
+    address-line1:
+        de: "Region"
+        en: "area"
+    country-name:
+        de: "Landesname"
+        en: "country-name"
+    organization:
+        de: "Firma"
+        en: "company"
+    organization-title:
+        de: "Funktion"
+        en: "function"
+    url:
+        de: "Webseite"
+        en: "website"
+    language:
+        de: "Sprache"
+        en: "language"
+    bday:
+        de: "Geburtstag"
+        en: "birthday"
+    bday-day:
+        de: "Geburtstag (Tag)"
+        en: "birthday (day)"
+    bday-month:
+        de: "Geburtstag (Monat)"
+        en: "birthday (month)"
+    bday-year:
+        de: "Geburtstag (Jahr)"
+        en: "birthday (year)"
+    nickname:
+        de: "Spitzname"
+        en: "nickname"
+    additional-name:
+        de: "Zweiter Vorname"
+        en: "middle name"
+    username:
+        de: "Benutzername"
+        en: "username"
+    new-password:
+        de: "Neues Passwort"
+        en: "new password"
+    current-password:
+        de: "Aktuelle Passwort"
+        en: "current password"
   width: 1/2
 
 required:
@@ -34,8 +99,6 @@ required:
 required_fail:
   label: form.block.fromfields.required_fail
   type: text
+  help: form.block.fromfields.required_fail.help
   when:
     required: true
-
-line:
-  type: line
