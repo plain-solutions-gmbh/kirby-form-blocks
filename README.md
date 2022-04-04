@@ -34,10 +34,7 @@ Based on the great features of [Kirby 3.6](https://getkirby.com/releases/3.6).
 ## Before we start
 
 >This plugin will save you and your customer an enormous amount of time.
->
->Maintaining the energy balance by...<br />
->☝️  ...[making a donation](https://www.paypal.com/donate/?hosted_button_id=X4TKGVJG3X69Q)<br />
->✌️ ...purchasing your Kirby license with [this affiliate link](https://a.paddle.com/v2/click/1129/136529?link=1170)
+>Maintaining the energy balance by [making a donation](https://www.paypal.com/donate/?hosted_button_id=X4TKGVJG3X69Q) ☕️
 
 ## Installation
 
