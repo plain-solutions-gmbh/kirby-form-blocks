@@ -33,8 +33,9 @@ Based on the great features of [Kirby 3.6](https://getkirby.com/releases/3.6).
 
 ## Before we start
 
->This plugin will save you and your customer an enormous amount of time.
->Maintaining the energy balance by [making a donation](https://www.paypal.com/donate/?hosted_button_id=X4TKGVJG3X69Q) ☕️
+>Do you miss a feature? [Check this out!](https://kirby-form-blocks.nolt.io/)
+>
+>Upvote and donate. Maybe your feature will be implemented soon! 
 
 ## Installation
 
