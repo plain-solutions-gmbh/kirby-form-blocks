@@ -33,9 +33,9 @@ Based on the great features of [Kirby 3.6](https://getkirby.com/releases/3.6).
 
 ## Before we start
 
->Do you miss a feature? [Check this out!](https://kirby-form-blocks.nolt.io/)
->
->Upvote and donate. Maybe your feature will be implemented soon! 
+>Do you miss a feature? 
+>Post a feature request and [donate something](https://www.paypal.com/donate/?hosted_button_id=ZMV4BV3X7EUT4).
+>I can't guarantee that your suggestion will make it into the next release.
 
 ## Installation
 
