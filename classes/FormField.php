@@ -221,8 +221,14 @@ class FormField extends Block
      * @param array $prop
      * @return array|NULL
      */
-    public function selectedOptions($prop = 'value')
+    public function selectedOptions($prop = 'label')
     {
+        $out = [];
+        foreach ($this->options()->toArray() as $value) {
+            if ($value['selected'])
+                array_push($out,$value[$prop]);
+        }
+        return $out;
         return $this->options()->filterBy('selected', true)->pluck($prop, true);
     }
 
