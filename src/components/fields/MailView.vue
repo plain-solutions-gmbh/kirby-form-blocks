@@ -2,7 +2,6 @@
     <div class="k-field-type-mail-view">
         <!-- eslint-disable vue/no-v-html -->
 
-        <k-items>
             <k-item 
                 v-for="mail in list"
                 :key="mail.id"
@@ -32,7 +31,6 @@
                 disabled="true"
             />
             
-        </k-items>
         <k-text class="k-field-type-page-change-display">
             <a v-if="!displayShown" @click="displaySet(true)">{{$t('form.block.inbox.changedisplay')}}</a>
             <a v-if="displayShown" @click="displaySet(false)">{{$t('close')}}</a>

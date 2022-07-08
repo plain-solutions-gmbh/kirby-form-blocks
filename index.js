@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  var render$2 = function() {
+  var render$1 = function() {
     var _vm = this;
     var _h = _vm.$createElement;
     var _c = _vm._self._c || _h;
@@ -8,8 +8,8 @@
       _vm.$set(_vm.content, "name", $$v);
     }, expression: "content.name" } }), _c("k-tag", { attrs: { "data-state": _vm.state } }, [_vm._v(_vm._s(_vm.$t("form.block.inbox.show")) + " (" + _vm._s(_vm.stateText) + ")")])], 1)]);
   };
-  var staticRenderFns$2 = [];
-  render$2._withStripped = true;
+  var staticRenderFns$1 = [];
+  render$1._withStripped = true;
   var Form_vue_vue_type_style_index_0_lang = "";
   function normalizeComponent(scriptExports, render2, staticRenderFns2, functionalTemplate, injectStyles, scopeId, moduleIdentifier, shadowMode) {
     var options = typeof scriptExports === "function" ? scriptExports.options : scriptExports;
@@ -62,7 +62,7 @@
       options
     };
   }
-  const __vue2_script$2 = {
+  const __vue2_script$1 = {
     data() {
       return {
         total: "-",
@@ -119,84 +119,6 @@
       }
     }
   };
-  const __cssModules$2 = {};
-  var __component__$2 = /* @__PURE__ */ normalizeComponent(__vue2_script$2, render$2, staticRenderFns$2, false, __vue2_injectStyles$2, null, null, null);
-  function __vue2_injectStyles$2(context) {
-    for (let o in __cssModules$2) {
-      this[o] = __cssModules$2[o];
-    }
-  }
-  __component__$2.options.__file = "src/components/blocks/Form.vue";
-  var Form = /* @__PURE__ */ function() {
-    return __component__$2.exports;
-  }();
-  var render$1 = function() {
-    var _vm = this;
-    var _h = _vm.$createElement;
-    var _c = _vm._self._c || _h;
-    return _c("k-select-field", { attrs: { "value": _vm.value, "options": _vm.selectOptions, "required": _vm.required, "label": _vm.label, "help": _vm.help }, on: { "input": _vm.onInput } });
-  };
-  var staticRenderFns$1 = [];
-  render$1._withStripped = true;
-  const __vue2_script$1 = {
-    props: {
-      help: {
-        type: String,
-        default: ""
-      },
-      label: {
-        type: String,
-        default: ""
-      },
-      required: {
-        type: Boolean,
-        default: false
-      },
-      value: {
-        type: String,
-        default: ""
-      }
-    },
-    data() {
-      return {
-        listItems: []
-      };
-    },
-    computed: {
-      selectOptions() {
-        var _a;
-        if (this.listItems)
-          return (_a = this.listItems) == null ? void 0 : _a.map((a) => {
-            var _a2, _b;
-            return {
-              text: (_a2 = a == null ? void 0 : a.label) != null ? _a2 : "error",
-              value: (_b = a == null ? void 0 : a.slug) != null ? _b : "error"
-            };
-          });
-        return [];
-      }
-    },
-    created() {
-      this.findOptions(this);
-    },
-    methods: {
-      findOptions(parent) {
-        var _a, _b;
-        if (!parent) {
-          throw this.$t("form.block.inbox.notinblock");
-        }
-        let val = (_b = (_a = parent == null ? void 0 : parent.value) == null ? void 0 : _a.options) != null ? _b : false;
-        if (val) {
-          this.listItems = val;
-          return;
-        }
-        this.findOptions(parent.$parent);
-      },
-      onInput(value) {
-        this.$emit("input", value);
-      }
-    }
-  };
   const __cssModules$1 = {};
   var __component__$1 = /* @__PURE__ */ normalizeComponent(__vue2_script$1, render$1, staticRenderFns$1, false, __vue2_injectStyles$1, null, null, null);
   function __vue2_injectStyles$1(context) {
@@ -204,15 +126,15 @@
       this[o] = __cssModules$1[o];
     }
   }
-  __component__$1.options.__file = "src/components/fields/SelectOption.vue";
-  var SelectOption = /* @__PURE__ */ function() {
+  __component__$1.options.__file = "src/components/blocks/Form.vue";
+  var Form = /* @__PURE__ */ function() {
     return __component__$1.exports;
   }();
   var render = function() {
     var _vm = this;
     var _h = _vm.$createElement;
     var _c = _vm._self._c || _h;
-    return _c("div", { staticClass: "k-field-type-mail-view" }, [_c("k-items", [_vm._l(_vm.list, function(mail) {
+    return _c("div", { staticClass: "k-field-type-mail-view" }, [_vm._l(_vm.list, function(mail) {
       return _c("k-item", { key: mail.id, staticClass: "k-field-type-mail-list-item", attrs: { "options": [
         mail.read == "" ? { icon: "preview", text: _vm.$t("form.block.inbox.asread"), click: function() {
           return _vm.setRead(true, mail);
@@ -227,7 +149,7 @@
       } } }, [_c("k-status-icon", { attrs: { "status": mail.status, "tooltip": mail.tooltip } }), _c("header", { staticClass: "k-item-content" }, [_vm._t("default", function() {
         return [_c("h3", { staticClass: "k-item-title" }, [_vm._v(_vm._s(mail.title))]), _c("p", { staticClass: "k-item-info", domProps: { "innerHTML": _vm._s(mail.desc) } })];
       })], 2)], 1);
-    }), _vm.list.length == 0 ? _c("k-item", { staticClass: "k-field-type-page-list-item-empty", attrs: { "text": _vm.$t("form.block.inbox.empty"), "disabled": "true" } }) : _vm._e()], 2), _c("k-text", { staticClass: "k-field-type-page-change-display" }, [!_vm.displayShown ? _c("a", { on: { "click": function($event) {
+    }), _vm.list.length == 0 ? _c("k-item", { staticClass: "k-field-type-page-list-item-empty", attrs: { "text": _vm.$t("form.block.inbox.empty"), "disabled": "true" } }) : _vm._e(), _c("k-text", { staticClass: "k-field-type-page-change-display" }, [!_vm.displayShown ? _c("a", { on: { "click": function($event) {
       return _vm.displaySet(true);
     } } }, [_vm._v(_vm._s(_vm.$t("form.block.inbox.changedisplay")))]) : _vm._e(), _vm.displayShown ? _c("a", { on: { "click": function($event) {
       return _vm.displaySet(false);
@@ -241,7 +163,7 @@
       return _vm.$refs.dialog.close();
     } } }, [_vm._v(_vm._s(_vm.$t("close")))]), _vm.current.read == "" ? _c("k-button", { on: { "click": function($event) {
       return _vm.setRead(true);
-    } } }, [_vm._v(_vm._s(_vm.$t("form.block.inbox.asread")))]) : _vm._e()], 1)], 1)], 2)], 1);
+    } } }, [_vm._v(_vm._s(_vm.$t("form.block.inbox.asread")))]) : _vm._e()], 1)], 1)], 2)], 2);
   };
   var staticRenderFns = [];
   render._withStripped = true;
@@ -364,8 +286,7 @@
   }();
   window.panel.plugin("microman/form-blocks", {
     fields: {
-      mailview: MailView,
-      selectoption: SelectOption
+      mailview: MailView
     },
     blocks: {
       form: Form
