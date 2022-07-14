@@ -6,6 +6,4 @@
     <?= $formfield->required('attr') ?>
     <?= $formfield->ariaAttr() ?>
     <?= $formfield->autofill(true) ?>
->
-    <?= $formfield->value() ?>
-</textarea>
+><?= $formfield->value() ?></textarea>
