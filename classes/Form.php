@@ -233,7 +233,7 @@ class Form extends Block
             $out = array_diff($out, [$field->autofill(), $field->slug()]);
         }
 
-        return count($out) > 0 ? $out[1] : "honeypot";
+        return count($out) > 0 ? array_values($out)[0] : "honeypot";
     }
 
     /************************/
