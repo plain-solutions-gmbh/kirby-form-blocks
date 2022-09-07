@@ -1,3 +1,4 @@
+<?php $form = $block; ?>
 <?php if ($form->showForm()) : ?>
 
 	<form method="post" id="<?= $form->id() ?>" action="<?= $page->url() . "#" . $form->id() ?>" novalidate>
