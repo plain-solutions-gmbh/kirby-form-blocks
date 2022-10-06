@@ -3,7 +3,7 @@
 namespace microman;
 
 use Kirby\Cms\Blocks;
-use Kirby\Http\Server;
+use Kirby\Http\Environment;
 
 class FormFields extends Blocks
 {
@@ -28,7 +28,7 @@ class FormFields extends Blocks
     {
         $this->parent = $parent;
         
-        $this->isFilled = Server::get('REQUEST_METHOD') === 'POST' && get($formid);
+        $this->isFilled = Environment::getGlobally('REQUEST_METHOD') === 'POST' && get($formid);
 
         foreach ($params as $formfield) {
 
