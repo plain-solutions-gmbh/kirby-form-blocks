@@ -596,7 +596,8 @@ class Form extends Block
     public function controller(): array
     {
         return [
-            'form'   => $this,
+            'form'    => $this,
+            'block'   => $this,
             'content' => $this->content(),
             'id'      => $this->id(),
             'prev'    => $this->prev(),

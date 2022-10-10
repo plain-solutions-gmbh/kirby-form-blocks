@@ -9,11 +9,11 @@ load([
 
 use microman\Form;
 use microman\FormBlueprint;
-use Kirby\Http\Server;
+use Kirby\Cms\App as Kirby;
 
-\Kirby\Cms\App::plugin('microman/formblock', [
+Kirby::plugin('microman/formblock', [
     'options' => [
-        'from_email' => 'no-reply@' . Server::host(),
+        'from_email' => 'no-reply@' . Kirby::instance()->environment()->host(),
         'placeholders' => FormBlueprint::getPlaceholders(),
         'honeypot_variants' => ["email", "name", "url", "tel", "given-name", "family-name", "street-address", "postal-code", "address-line2", "address-line1", "country-name", "language", "bday"],
         'disable_inbox' => false,
