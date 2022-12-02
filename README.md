@@ -1,5 +1,11 @@
 # Kirby Form Block
 
+## Obsolete ~~v2.0.4~~ -> v3.0
+
+This plugin is no longer under maintenance!
+
+Use new [Kirby Form Block Suite](https://github.com/youngcut/kirby-form-block-suite) with a lot of new features.
+
 ## Overview
 
 This form plugin for Kirby offers you maximum flexibility and usability.
